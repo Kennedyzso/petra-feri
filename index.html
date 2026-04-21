@@ -99,6 +99,12 @@
       .arrow.right {
         right: 10px;
       }
+
+      .arrow.hidden {
+        display: none;
+      }
+
+     
     </style>
   </head>
   <body>
@@ -109,8 +115,8 @@
       <div class="slide"><img src="img4.jpg" /></div>
     </div>
 
-    <div class="arrow left" onclick="prev()">❮</div>
-    <div class="arrow right" onclick="next()">❯</div>
+    <div id="arrow-left" class="arrow left hidden" onclick="prev()">❮</div>
+    <div id="arrow-right" class="arrow right " onclick="next()">❯</div>
 
     <div class="nav">
       <div class="dot active"></div>
@@ -133,6 +139,7 @@
         if (current < 3) {
           current++;
           update();
+          updateArrows();
         }
       }
 
@@ -140,6 +147,20 @@
         if (current > 0) {
           current--;
           update();
+          updateArrows();
+        }
+      }
+
+      function updateArrows() {
+        if(current === 0) {
+          document.getElementById('arrow-left').classList.add('hidden');
+        }else{
+          document.getElementById('arrow-left').classList.remove('hidden');
+        }
+        if(current === 3) {
+          document.getElementById('arrow-right').classList.add('hidden');
+        }else{
+          document.getElementById('arrow-right').classList.remove('hidden');
         }
       }
 
